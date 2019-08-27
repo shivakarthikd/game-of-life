@@ -14,10 +14,10 @@ pipeline {
             steps {
                 sh 'mvn test' 
             }
-            post {
-                always {
-                    junit 'target/surefire-reports/*.xml' 
-                }
+        }
+        stage('Run'){
+            steps {
+                sh 'mvn jetty:run'
             }
         }
     }
