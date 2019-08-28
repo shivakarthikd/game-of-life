@@ -21,7 +21,7 @@ pipeline {
     stages {
 	stage('Check Style, FindBugs, PMD') {
 		steps {
-                        sh 'mvn --no-daemon checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
+                        sh 'mvn  checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
 			    
 	     }
              post {
