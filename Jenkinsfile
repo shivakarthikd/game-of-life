@@ -81,8 +81,8 @@ pipeline {
 			   fileOperations([fileCopyOperation(
                                     excludes: '',
                                     flattenFiles: false,
-                                    includes: 'C:\\My-Source\\**',
-                                    targetLocation: "C:\\My-Destination"
+                                    includes: './gameoflife-1.0.war',
+                                    targetLocation: "/root/webapp1"
                                      )])
 			        
 			    sh 'docker run -d  -it --rm -p 8884:8080 -v /root/webapp1:/usr/local/tomcat/webapps tomcat:8.0'
