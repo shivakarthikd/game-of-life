@@ -33,7 +33,7 @@ pipeline {
                     pom = readMavenPom file: "gameoflife-web/pom.xml";
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "**/*.${pom.packaging}");
-		    echo "${filesByGlob} ${pom}" 
+		    echo "${pom.artifactId"}
                     // Print some info from the artifact found
                     echo "${filesByGlob[1].name} ${filesByGlob[1].path} ${filesByGlob[1].directory} ${filesByGlob[1].length} ${filesByGlob[1].lastModified}"
                     // Extract the path from the File found
