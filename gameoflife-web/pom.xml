@@ -8,7 +8,7 @@
     </parent>
     <groupId>com.wakaleo.gameoflife</groupId>
     <artifactId>gameoflife</artifactId>
-    
+    <version>1.0</version>
     <packaging>war</packaging>
     <name>gameoflife-web</name>
 
