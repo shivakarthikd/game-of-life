@@ -8,7 +8,7 @@
     </parent>
     <groupId>com.wakaleo.gameoflife</groupId>
     <artifactId>gameoflife-core</artifactId>
-    <packaging>war</packaging>
+    <packaging>jar</packaging>
     <name>gameoflife-core</name>
     <url>${HUDSON_URL}</url>
     <reporting>
