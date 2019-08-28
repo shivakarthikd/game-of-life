@@ -20,11 +20,11 @@ pipeline {
         
     stages {
 	    
-        stage('Build') {
-            steps {
-                sh 'mvn install'
-            }
-        }
+       // stage('Build') {
+         //   steps {
+           //     sh 'mvn install'
+            //}
+        //}
 	 
 	stage ('push articrafts to nexus') {
             steps {
