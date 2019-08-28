@@ -25,7 +25,7 @@ pipeline {
            //     sh 'mvn install'
             //}
         //}
-	 
+	''' 
 	stage ('push articrafts to nexus') {
             steps {
 	         script {
@@ -71,6 +71,7 @@ pipeline {
 			  
             }
         }
+	'''
 	
 	stage('deploy'){
 		agent { label 'master'}
