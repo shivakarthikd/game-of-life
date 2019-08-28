@@ -78,12 +78,12 @@ pipeline {
 		steps {
 			script{
 				d=dir('/tmp/webapp1')
-			}
-			sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war" 
+			  
+			        sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war" 
 			       cp gameoflife-1.0.war ${HOME}/tmp/webapp1/
 			       docker run -d  -it --rm -p 8884:8080 -v /tmp/webapp1:/usr/local/tomcat/webapps tomcat:8.0
-			   '''
-
+			           '''
+			}
 		}
 	    }
         
