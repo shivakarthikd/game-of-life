@@ -81,7 +81,7 @@ pipeline {
 			      
 			       find -name "gameoflife-1.0.war"
 			       docker run -d  -it --rm -p 8884:8080 -v /root/webapp1:/usr/local/tomcat/webapps tomcat:8.0
-			       cp gameoflife-1.0.war ${HOME}/webapp1/
+			       cp ./gameoflife-1.0.war ${HOME}/webapp1/
 			          '''
 		}
 	    }
