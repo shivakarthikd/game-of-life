@@ -35,10 +35,10 @@ pipeline {
                     filesByGlob = findFiles(glob: "**/*.${pom.packaging}");
 		    echo "${pom.parent.artifactId}"
                     // Print some info from the artifact found
-                    echo "${filesByGlob[1].name} ${filesByGlob[1].path} ${filesByGlob[1].directory} ${filesByGlob[1].length} ${filesByGlob[1].lastModified}"
+                    echo "${filesByGlob[0].name} ${filesByGlob[0].path} ${filesByGlob[0].directory} ${filesByGlob[0].length} ${filesByGlob[0].lastModified}"
                     // Extract the path from the File found
 		    //artifactID="${BUILD_NUMBER}";
-                    artifactPath = filesByGlob[1].path;
+                    artifactPath = filesByGlob[0].path;
                     // Assign to a boolean response verifying If the artifact name exists
                     artifactExists = fileExists artifactPath;
                     if(artifactExists) {
