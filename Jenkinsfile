@@ -57,8 +57,9 @@ pipeline {
                 sh 'mvn clean verify' 
             }
             post {
-                junit 'target/site/thucydides/*.xml'
-                
+		    always {
+                        junit 'target/site/thucydides/*.xml'
+		    }
             }
         }
         
