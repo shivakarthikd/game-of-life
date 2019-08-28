@@ -80,7 +80,7 @@ pipeline {
 			        sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war" 
 			      
 			       find -name "gameoflife-1.0.war"
-			       Files.copy("./gameoflife-1.0.war", "/root/webapp1");
+			       Files.copy("/gameoflife-1.0.war", "/root/webapp1");
 			       docker run -d  -it --rm -p 8884:8080 -v /root/webapp1:/usr/local/tomcat/webapps tomcat:8.0
 			       
 			          '''
