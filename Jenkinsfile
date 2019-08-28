@@ -33,7 +33,7 @@ pipeline {
                     pom = readMavenPom file: "gameoflife-web/pom.xml";
                     // Find built artifact under target folder
                     filesByGlob = findFiles(glob: "**/*.${pom.packaging}");
-		    echo "${pom.artifactId}"
+		    echo "${pom.parent.artifactId}"
                     // Print some info from the artifact found
                     echo "${filesByGlob[1].name} ${filesByGlob[1].path} ${filesByGlob[1].directory} ${filesByGlob[1].length} ${filesByGlob[1].lastModified}"
                     // Extract the path from the File found
@@ -47,13 +47,13 @@ pipeline {
                             nexusVersion: NEXUS_VERSION,
                             protocol: NEXUS_PROTOCOL,
                             nexusUrl: NEXUS_URL,
-                            groupId: pom.groupId,
-                            version: pom.version,
+                            groupId: pom.parent.groupId,
+                            version: pom.parent.version,
                             repository: NEXUS_REPOSITORY,
                             credentialsId: NEXUS_CREDENTIAL_ID,
                             artifacts: [
                                 // Artifact generated such as .jar, .ear and .war files.
-				    [ artifactId: pom.artifactId,
+				    [ artifactId: pom.parent.artifactId,
                                 classifier: '',
                                 file: artifactPath,
                                 type: pom.packaging],
