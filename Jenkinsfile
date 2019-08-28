@@ -70,6 +70,16 @@ pipeline {
 			  
             }
         }
+	
+	stage('deploy'){
+		agent { label 'master'}
+		steps {
+			sh ''' curl -O "http://10.0.0.74:8081/" 
+			       docker run -d  -it --rm -p 8884:8080 -v /tmp/webapp:/usr/local/tomcat/webapps tomcat:8.0
+			   '''
+
+		}
+	    }
         
         stage('Test running server') { 
             steps {
