@@ -81,7 +81,7 @@ pipeline {
 			   fileOperations([fileCopyOperation(
                                     excludes: '',
                                     flattenFiles: false,
-                                    includes: './gameoflife-1.0.war',
+                                    includes: '**/*.war',
                                     targetLocation: "/root/webapp1"
                                      )])
 			        
