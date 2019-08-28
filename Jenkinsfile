@@ -16,7 +16,10 @@ pipeline {
  
    }
     
-   stage('Check Style, FindBugs, PMD') {
+   
+        
+    stages {
+	stage('Check Style, FindBugs, PMD') {
 		steps {
                         sh 'mvn --no-daemon checkstyleMain checkstyleTest findbugsMain findbugsTest pmdMain pmdTest cpdCheck'
 			    
@@ -41,8 +44,8 @@ pipeline {
 			}
 		}		
       }
-        
-    stages {
+	    
+	    
         stage('Build') {
             steps {
                 sh 'mvn install'
