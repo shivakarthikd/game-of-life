@@ -82,7 +82,7 @@ pipeline {
                                     excludes: '',
                                     flattenFiles: false,
                                     includes: '**/*.war',
-                                    targetLocation: "/root/webapp1"
+                                    targetLocation: "/home/webapp1"
                                      )])
 			        
 			    sh 'docker run -d  -it --rm -p 8884:8080 -v /root/webapp1:/usr/local/tomcat/webapps tomcat:8.0'
