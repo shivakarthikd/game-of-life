@@ -73,16 +73,16 @@ pipeline {
       //  }
 	
 	
-	stage('deploy'){
+	//stage('deploy'){
 		
-		steps {         
+	//	steps {         
 			  
-			   sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
-			          docker build -t gameoflife:latest .     
-			          docker run -d  -it --rm -p 8884:8080  gameoflife:latest
-			   '''
-		}
-	    }
+	//		   sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
+	//		          docker build -t gameoflife:latest .     
+	//		          docker run -d  -it --rm -p 8884:8080  gameoflife:latest
+	//		   '''
+	//	}
+	  //  }
         
         stage('Test running server') { 
             steps {
