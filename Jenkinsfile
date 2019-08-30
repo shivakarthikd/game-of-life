@@ -1,5 +1,5 @@
 pipeline {
-    agent { label 'fargate' }
+    agent { label 'fargateec2' }
     tools {
         maven 'M3'
     }
