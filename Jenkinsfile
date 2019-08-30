@@ -74,7 +74,7 @@ pipeline {
 	
 	
 	stage('deploy'){
-		
+		agent {label 'master'}
 		steps {         
 			  
 			   sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
