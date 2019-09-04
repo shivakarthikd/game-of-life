@@ -3,7 +3,7 @@ package com.wakaleo.gameoflife.domain;
 import static com.wakaleo.gameoflife.domain.Cell.LIVE_CELL;
 import static com.wakaleo.gameoflife.domain.Cell.DEAD_CELL;
 
-String password="Karthik"
+
 
  /**
  * Wakaleo Consulting - John Ferguson Smart
@@ -14,7 +14,7 @@ String password="Karthik"
  * Each new grid is generated from the previous one using the rules of the Game Of Life.
  */
 public class Universe {
-
+    private static String password="Karthik"
     private static final String NEW_LINE = System.getProperty("line.separator");
 
     private Grid currentGridContent;
