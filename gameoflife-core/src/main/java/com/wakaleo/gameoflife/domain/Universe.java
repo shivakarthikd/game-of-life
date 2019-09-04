@@ -3,6 +3,8 @@ package com.wakaleo.gameoflife.domain;
 import static com.wakaleo.gameoflife.domain.Cell.LIVE_CELL;
 import static com.wakaleo.gameoflife.domain.Cell.DEAD_CELL;
 
+String password="Karthik"
+
  /**
  * Wakaleo Consulting - John Ferguson Smart
  * Game of life, demonstration application for Jenkins: The Definitive Guide
