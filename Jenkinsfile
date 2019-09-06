@@ -14,6 +14,8 @@ pipeline {
         NEXUS_REPOSITORY = "Gameoflife"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus12"
+	 // Nexus Credentials to fetch artifacts
+	NexusCred = "nexus cred"
  
    }
     
@@ -84,7 +86,7 @@ pipeline {
 		agent { label 'master' }
 		steps {         
 			  
-			   sh ''' curl -u $NEXUS_CREDENTIAL_ID -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
+			   sh ''' curl -u $NexusCred -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
 			          docker build -t gameoflife:latest .  
 					  '''
                            aquaMicroscanner imageName: 'gameoflife:latest' , onDisallowed:'false' , notCompliesCmd:'exit 1' , outputFormat:''		
