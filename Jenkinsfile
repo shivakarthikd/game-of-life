@@ -76,16 +76,18 @@ pipeline {
 	
 	
 	stage('deploy'){
-		agent {label 'master'}
+		agent { label 'master' }
 		steps {         
 			  
-			   sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
+			   sh ''' curl -u $NEXUS_CREDENTIAL_ID -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
 			          docker build -t gameoflife:latest .  
 					  '''
-               aquaMicroscanner: Aqua imageName: 'gameoflife:latest' onDisallowed:'false' notCompliesCmd:'exit 1'		
+                           aquaMicroscanner imageName: 'gameoflife:latest' , onDisallowed:'false' , notCompliesCmd:'exit 1' , outputFormat:''		
       			  
-		        sh ' docker run -d  -it --rm -p 8383:8080  gameoflife:latest'
+		           sh ' docker run -d  -it --rm -p 8383:8080  gameoflife:latest'
 		}
+
+     }
     }
         
         stage('Test running server') { 
