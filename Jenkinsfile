@@ -26,7 +26,7 @@ pipeline {
                     }
                 }
             }
-        }
+        
 	
 	stage ('push articrafts to nexus') {
             steps {
@@ -87,7 +87,7 @@ pipeline {
 		           sh ' docker run -d  -it --rm -p 8383:8080  gameoflife:latest'
 		}
 
-     }
+     
     }
         
         stage('Test running server') { 
