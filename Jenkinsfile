@@ -1,8 +1,5 @@
 pipeline {
     agent { label 'fargatec2' }
-    tools {
-        maven 'M3'
-    }
      environment {
               NEXUS_VERSION = "nexus3"
         // This can be http or https
@@ -20,9 +17,14 @@ pipeline {
         
     stages {
 	    
-        stage('Build') {
+        stage('build && SonarQube analysis') {
             steps {
-                sh 'mvn install'
+                withSonarQubeEnv('My SonarQube Server') {
+                    // Optionally use a Maven environment you've configured already
+                    withMaven(maven:'M3') {
+                        sh 'mvn clean package sonar:sonar'
+                    }
+                }
             }
         }
 	
@@ -78,11 +80,13 @@ pipeline {
 		steps {         
 			  
 			   sh ''' curl -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
-			          docker build -t gameoflife:latest .     
-			          docker run -d  -it --rm -p 8884:8080  gameoflife:latest
-			   '''
+			          docker build -t gameoflife:latest .  
+					  '''
+               aquaMicroscanner: Aqua imageName: 'gameoflife:latest' onDisallowed:'false' notCompliesCmd:'exit 1'		
+      			  
+		        sh ' docker run -d  -it --rm -p 8383:8080  gameoflife:latest'
 		}
-	    }
+    }
         
         stage('Test running server') { 
             steps {
@@ -93,4 +97,3 @@ pipeline {
         
     }
 }
-          
