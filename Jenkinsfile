@@ -26,6 +26,7 @@ pipeline {
                     }
                 }
             }
+	}
         
 	
 	stage ('push articrafts to nexus') {
@@ -88,7 +89,7 @@ pipeline {
 		}
 
      
-    }
+          }
         
         stage('Test running server') { 
             steps {
