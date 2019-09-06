@@ -14,8 +14,6 @@ pipeline {
         NEXUS_REPOSITORY = "Gameoflife"
         // Jenkins credential id to authenticate to Nexus OSS
         NEXUS_CREDENTIAL_ID = "nexus12"
-	 // Nexus Credentials to fetch artifacts
-	NexusCred = "nexus cred"
  
    }
     
@@ -84,6 +82,8 @@ pipeline {
 	
 	stage('deploy'){
 		agent { label 'master' }
+		environment { NexusCred = "nexus cred" }
+		
 		steps {         
 			  
 			   sh ''' curl -u $NexusCred -O "http://10.0.0.74:8081/repository/Gameoflife/com/wakaleo/gameoflife/gameoflife/1.0/gameoflife-1.0.war"
