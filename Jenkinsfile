@@ -1,6 +1,10 @@
 pipeline {
+    
     agent { label 'fargatec2' }
-     environment {
+    tools {
+        maven 'M3'
+    }
+    environment {
               NEXUS_VERSION = "nexus3"
         // This can be http or https
         NEXUS_PROTOCOL = "http"
@@ -21,9 +25,9 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarserver') {
                     // Optionally use a Maven environment you've configured already
-                    withMaven(maven:'M3') {
+                   
                         sh 'mvn clean package sonar:sonar'
-                    }
+                   
                 }
             }
 	}
